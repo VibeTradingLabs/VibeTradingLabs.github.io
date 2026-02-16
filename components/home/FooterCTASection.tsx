@@ -1,0 +1,35 @@
+import Link from "next/link";
+import ExternalLink from "@/components/ui/ExternalLink";
+
+const GITHUB_URL = "https://github.com/VibeTradingLabs";
+
+export default function FooterCTASection() {
+  return (
+    <section className="border-t border-[var(--border-primary)] py-20 md:py-24">
+      <div className="section-container">
+        <div className="mx-auto max-w-xl text-center">
+          <h2 className="text-2xl font-semibold tracking-tight text-[var(--text-primary)] md:text-3xl">
+            Start building with a unified trading framework.
+          </h2>
+
+          <div className="mt-10 flex flex-wrap items-center justify-center gap-4">
+            <Link
+              href="/docs/getting-started"
+              className="inline-flex items-center justify-center rounded-none border border-[var(--text-primary)] bg-[var(--text-primary)] px-7 py-3 text-xs font-medium uppercase tracking-widest text-white transition-colors hover:bg-transparent hover:text-[var(--text-primary)]"
+              aria-label="Get started with VibeTrading"
+            >
+              Get Started
+            </Link>
+
+            <ExternalLink
+              href={GITHUB_URL}
+              className="inline-flex items-center justify-center rounded-none border border-[var(--border-secondary)] px-7 py-3 text-xs font-medium uppercase tracking-widest text-[var(--text-primary)] transition-colors hover:border-[var(--text-primary)]"
+            >
+              GitHub
+            </ExternalLink>
+          </div>
+        </div>
+      </div>
+    </section>
+  );
+}

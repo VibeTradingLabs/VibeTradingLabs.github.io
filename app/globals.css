@@ -1,0 +1,100 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@import url("https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap");
+
+@layer base {
+  :root {
+    --bg-primary: #ffffff;
+    --bg-secondary: #fafafa;
+    --bg-tertiary: #f5f5f5;
+    --bg-card: #fafafa;
+    --bg-code: #f7f7f8;
+
+    --text-primary: #0a0a0a;
+    --text-secondary: #525252;
+    --text-tertiary: #8a8a8a;
+
+    --border-primary: #e5e5e5;
+    --border-secondary: #d4d4d4;
+  }
+
+  * {
+    box-sizing: border-box;
+  }
+
+  html {
+    scroll-behavior: smooth;
+  }
+
+  body {
+    background-color: var(--bg-primary);
+    color: var(--text-primary);
+    font-family: "Inter", ui-sans-serif, system-ui, -apple-system, sans-serif;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+
+  ::selection {
+    background-color: #0a0a0a;
+    color: #ffffff;
+  }
+}
+
+@layer components {
+  .section-container {
+    @apply mx-auto w-full max-w-content px-6;
+  }
+
+  .code-highlight {
+    @apply rounded-lg border border-[var(--border-primary)] bg-[var(--bg-code)] font-mono text-sm;
+  }
+}
+
+/* Syntax highlighting — muted palette for light background */
+.token-keyword {
+  color: #7c3aed;
+}
+.token-string {
+  color: #16a34a;
+}
+.token-function {
+  color: #2563eb;
+}
+.token-comment {
+  color: #9ca3af;
+}
+.token-number {
+  color: #d97706;
+}
+.token-operator {
+  color: #525252;
+}
+.token-punctuation {
+  color: #737373;
+}
+.token-class {
+  color: #b45309;
+}
+.token-param {
+  color: #d97706;
+}
+.token-plain {
+  color: #0a0a0a;
+}
+
+/* Scrollbar for code blocks */
+.code-scrollbar::-webkit-scrollbar {
+  height: 6px;
+}
+.code-scrollbar::-webkit-scrollbar-track {
+  background: transparent;
+}
+.code-scrollbar::-webkit-scrollbar-thumb {
+  background: var(--border-secondary);
+  border-radius: 3px;
+}
+.code-scrollbar::-webkit-scrollbar-thumb:hover {
+  background: var(--text-tertiary);
+}
