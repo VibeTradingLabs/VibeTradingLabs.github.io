@@ -3,17 +3,14 @@
 import { useState } from "react";
 import Link from "next/link";
 import ExternalLink from "@/components/ui/ExternalLink";
+import LanguageSwitcher from "@/components/ui/LanguageSwitcher";
+import { useI18n } from "@/lib/i18n/context";
 
 const GITHUB_URL = "https://github.com/VibeTradingLabs";
 
-const navItems = [
-  { label: "Home", href: "/" },
-  { label: "Docs", href: "/docs" },
-  { label: "Examples", href: "/examples" },
-];
-
 export default function Header() {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
+  const { t } = useI18n();
 
   return (
     <header className="border-b border-[var(--border-primary)] bg-[var(--bg-primary)]">
@@ -28,21 +25,31 @@ export default function Header() {
 
         {/* Desktop Navigation */}
         <nav className="hidden items-center gap-8 md:flex">
-          {navItems.map((item) => (
-            <Link
-              key={item.label}
-              href={item.href}
-              className="text-xs font-medium uppercase tracking-widest text-[var(--text-secondary)] transition-colors hover:text-[var(--text-primary)]"
-            >
-              {item.label}
-            </Link>
-          ))}
+          <Link
+            href="/"
+            className="text-xs font-medium uppercase tracking-widest text-[var(--text-secondary)] transition-colors hover:text-[var(--text-primary)]"
+          >
+            {t("nav.home")}
+          </Link>
+          <Link
+            href="/docs"
+            className="text-xs font-medium uppercase tracking-widest text-[var(--text-secondary)] transition-colors hover:text-[var(--text-primary)]"
+          >
+            {t("nav.docs")}
+          </Link>
+          <Link
+            href="/examples"
+            className="text-xs font-medium uppercase tracking-widest text-[var(--text-secondary)] transition-colors hover:text-[var(--text-primary)]"
+          >
+            {t("nav.examples")}
+          </Link>
           <ExternalLink
             href={GITHUB_URL}
             className="text-xs font-medium uppercase tracking-widest text-[var(--text-secondary)] transition-colors hover:text-[var(--text-primary)]"
           >
             GitHub
           </ExternalLink>
+          <LanguageSwitcher />
         </nav>
 
         {/* Mobile menu button */}
@@ -69,22 +76,36 @@ export default function Header() {
       {mobileMenuOpen && (
         <nav className="border-t border-[var(--border-primary)] bg-[var(--bg-primary)] px-6 py-4 md:hidden">
           <div className="flex flex-col gap-3">
-            {navItems.map((item) => (
-              <Link
-                key={item.label}
-                href={item.href}
-                className="text-sm text-[var(--text-secondary)] transition-colors hover:text-[var(--text-primary)]"
-                onClick={() => setMobileMenuOpen(false)}
-              >
-                {item.label}
-              </Link>
-            ))}
+            <Link
+              href="/"
+              className="text-sm text-[var(--text-secondary)] transition-colors hover:text-[var(--text-primary)]"
+              onClick={() => setMobileMenuOpen(false)}
+            >
+              {t("nav.home")}
+            </Link>
+            <Link
+              href="/docs"
+              className="text-sm text-[var(--text-secondary)] transition-colors hover:text-[var(--text-primary)]"
+              onClick={() => setMobileMenuOpen(false)}
+            >
+              {t("nav.docs")}
+            </Link>
+            <Link
+              href="/examples"
+              className="text-sm text-[var(--text-secondary)] transition-colors hover:text-[var(--text-primary)]"
+              onClick={() => setMobileMenuOpen(false)}
+            >
+              {t("nav.examples")}
+            </Link>
             <ExternalLink
               href={GITHUB_URL}
               className="text-sm text-[var(--text-secondary)] transition-colors hover:text-[var(--text-primary)]"
             >
               GitHub
             </ExternalLink>
+            <div className="pt-2 border-t border-[var(--border-primary)]">
+              <LanguageSwitcher />
+            </div>
           </div>
         </nav>
       )}

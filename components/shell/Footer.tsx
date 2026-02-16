@@ -1,9 +1,13 @@
+"use client";
+
 import ExternalLink from "@/components/ui/ExternalLink";
 import Link from "next/link";
+import { useI18n } from "@/lib/i18n/context";
 
 const GITHUB_URL = "https://github.com/VibeTradingLabs";
 
 export default function Footer() {
+  const { t } = useI18n();
   const year = new Date().getFullYear();
 
   return (
@@ -12,14 +16,14 @@ export default function Footer() {
         <div className="flex items-center gap-4 text-xs text-[var(--text-tertiary)]">
           <span>&copy; {year} VibeTrading</span>
           <span>&middot;</span>
-          <span>MIT License</span>
+          <span>{t("footer.license")}</span>
         </div>
         <nav className="flex items-center gap-6 text-xs text-[var(--text-tertiary)]">
           <Link
             href="/docs"
             className="transition-colors hover:text-[var(--text-primary)]"
           >
-            Docs
+            {t("nav.docs")}
           </Link>
           <ExternalLink
             href={GITHUB_URL}

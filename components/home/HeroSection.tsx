@@ -1,6 +1,9 @@
+"use client";
+
 import Link from "next/link";
 import ExternalLink from "@/components/ui/ExternalLink";
 import CodeBlock from "@/components/ui/CodeBlock";
+import { useI18n } from "@/lib/i18n/context";
 
 const GITHUB_URL = "https://github.com/VibeTradingLabs";
 
@@ -16,6 +19,8 @@ engine = BacktestEngine(strategy)
 engine.run("BTCUSDT", timeframe="1h")`;
 
 export default function HeroSection() {
+  const { t } = useI18n();
+
   return (
     <section className="py-20 md:py-28 lg:py-32">
       <div className="section-container">
@@ -23,7 +28,7 @@ export default function HeroSection() {
           {/* Left — Text */}
           <div>
             <p className="mb-6 text-xs font-medium uppercase tracking-[0.2em] text-[var(--text-tertiary)]">
-              Open-source trading framework
+              {t("hero.tag")}
             </p>
 
             <h1 className="text-4xl font-bold leading-[1.15] tracking-tight text-[var(--text-primary)] md:text-5xl">
@@ -31,14 +36,13 @@ export default function HeroSection() {
             </h1>
 
             <p className="mt-5 max-w-lg text-base leading-relaxed text-[var(--text-secondary)] md:text-lg">
-              Open-source trading framework for generating, backtesting, and
-              deploying strategies across exchanges.
+              {t("hero.subtitle")}
             </p>
 
             <div className="mt-4 flex flex-col gap-0.5 font-mono text-sm text-[var(--text-tertiary)]">
-              <span>Generate strategies.</span>
-              <span>Run them anywhere.</span>
-              <span>Backtest natively.</span>
+              <span>{t("hero.line1")}</span>
+              <span>{t("hero.line2")}</span>
+              <span>{t("hero.line3")}</span>
             </div>
 
             <div className="mt-8 flex flex-wrap gap-4">
@@ -47,7 +51,7 @@ export default function HeroSection() {
                 className="inline-flex items-center justify-center rounded-none border border-[var(--text-primary)] bg-[var(--text-primary)] px-7 py-3 text-xs font-medium uppercase tracking-widest text-white transition-colors hover:bg-transparent hover:text-[var(--text-primary)]"
                 aria-label="Get started with VibeTrading"
               >
-                Get Started
+                {t("hero.getStarted")}
               </Link>
 
               <ExternalLink
