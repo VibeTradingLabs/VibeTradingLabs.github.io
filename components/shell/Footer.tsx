@@ -20,7 +20,7 @@ export default function Footer() {
         </div>
         <nav className="flex items-center gap-6 text-xs text-[var(--text-tertiary)]">
           <Link
-            href="/docs"
+            href="https://docs.vibetrading.dev/"
             className="transition-colors hover:text-[var(--text-primary)]"
           >
             {t("nav.docs")}
