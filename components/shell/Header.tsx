@@ -32,13 +32,13 @@ export default function Header() {
             {t("nav.home")}
           </Link>
           <Link
-            href="/docs"
+            href="https://docs.vibetrading.dev/"
             className="text-xs font-medium uppercase tracking-widest text-[var(--text-secondary)] transition-colors hover:text-[var(--text-primary)]"
           >
             {t("nav.docs")}
           </Link>
           <Link
-            href="/examples"
+            href="https://docs.vibetrading.dev/"
             className="text-xs font-medium uppercase tracking-widest text-[var(--text-secondary)] transition-colors hover:text-[var(--text-primary)]"
           >
             {t("nav.examples")}
