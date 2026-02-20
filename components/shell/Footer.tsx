@@ -4,7 +4,7 @@ import ExternalLink from "@/components/ui/ExternalLink";
 import Link from "next/link";
 import { useI18n } from "@/lib/i18n/context";
 
-const GITHUB_URL = "https://github.com/VibeTradingLabs";
+const GITHUB_URL = "https://github.com/VibeTradingLabs/vibetrading";
 
 export default function Footer() {
   const { t } = useI18n();

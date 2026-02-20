@@ -5,7 +5,7 @@ import ExternalLink from "@/components/ui/ExternalLink";
 import CodeBlock from "@/components/ui/CodeBlock";
 import { useI18n } from "@/lib/i18n/context";
 
-const GITHUB_URL = "https://github.com/VibeTradingLabs";
+const GITHUB_URL = "https://github.com/VibeTradingLabs/vibetrading";
 
 const heroCode = `from vibetrading import StrategyGenerator, BacktestEngine
 

@@ -6,7 +6,7 @@ import ExternalLink from "@/components/ui/ExternalLink";
 import LanguageSwitcher from "@/components/ui/LanguageSwitcher";
 import { useI18n } from "@/lib/i18n/context";
 
-const GITHUB_URL = "https://github.com/VibeTradingLabs";
+const GITHUB_URL = "https://github.com/VibeTradingLabs/vibetrading";
 
 export default function Header() {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
