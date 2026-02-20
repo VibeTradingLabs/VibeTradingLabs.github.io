@@ -1,4 +1,5 @@
 import AppShell from "@/components/shell/AppShell";
+import AnnouncementBanner from "@/components/home/AnnouncementBanner";
 import HeroSection from "@/components/home/HeroSection";
 import CapabilitiesSection from "@/components/home/CapabilitiesSection";
 import QuickstartSection from "@/components/home/QuickstartSection";
@@ -8,6 +9,7 @@ import FooterCTASection from "@/components/home/FooterCTASection";
 export default function HomePage() {
   return (
     <AppShell>
+      <AnnouncementBanner />
       <HeroSection />
       <CapabilitiesSection />
       <QuickstartSection />

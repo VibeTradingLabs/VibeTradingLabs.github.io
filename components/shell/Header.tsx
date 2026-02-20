@@ -49,6 +49,12 @@ export default function Header() {
           >
             GitHub
           </ExternalLink>
+          <ExternalLink
+            href="https://app.vibetrading.dev"
+            className="text-xs font-bold uppercase tracking-widest text-[var(--text-primary)] transition-colors hover:text-[var(--text-secondary)]"
+          >
+            App
+          </ExternalLink>
           <LanguageSwitcher />
         </nav>
 
@@ -102,6 +108,12 @@ export default function Header() {
               className="text-sm text-[var(--text-secondary)] transition-colors hover:text-[var(--text-primary)]"
             >
               GitHub
+            </ExternalLink>
+            <ExternalLink
+              href="https://app.vibetrading.dev"
+              className="text-sm font-bold text-[var(--text-primary)] transition-colors hover:text-[var(--text-secondary)]"
+            >
+              App
             </ExternalLink>
             <div className="pt-2 border-t border-[var(--border-primary)]">
               <LanguageSwitcher />
