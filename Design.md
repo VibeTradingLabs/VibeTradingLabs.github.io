@@ -1,24 +1,24 @@
 VibeTrading.dev
 Website Design Document
 
-Positioning: Framework-First, Developer-Oriented, Minimal
+Positioning: Agent-First, Prompt-to-Strategy, Developer-Friendly
 
 1. Product Positioning
 Core Identity
 
-VibeTrading is an open-source trading framework for generating, backtesting, and deploying multi-exchange strategies.
+VibeTrading is an open-source trading framework where users describe strategies in natural language and AI agents generate, backtest, and deploy executable code across exchanges.
 
 It is:
 
-Framework-first
+Agent-first — natural language is the primary interface for strategy creation
 
-Strategy-centric
+Prompt-to-strategy — structured AI pipeline from idea to running code
 
-Exchange-agnostic
+Backtest-native — generated strategies run in backtesting and live trading with identical code
 
-Backtest-native
+Exchange-agnostic — one strategy runs on Hyperliquid, Paradex, Lighter, and more
 
-Agent-compatible (via skill exposure)
+Framework-complete — full lifecycle from generation to deployment
 
 It is not:
 
@@ -26,28 +26,28 @@ A SaaS platform
 
 A signal-selling product
 
-An AI hype project
+A no-code builder (strategies are real Python, not visual blocks)
 
-A marketing-heavy trading site
+A black-box trading bot
 
 2. Website Philosophy
 Guiding Principles
 
-Keep the homepage simple and direct.
+Lead with the prompt-to-strategy workflow — show that users describe what they want and get running code.
 
-Avoid architectural philosophy on the first screen.
+Make the AI generation pipeline visible and concrete — not a vague "AI-powered" claim.
 
-Focus on developer clarity.
+Show the full lifecycle: prompt → code → backtest → deploy.
 
-Provide runnable examples early.
+Provide runnable examples immediately.
 
-Move deeper thinking to Docs and Concepts pages.
+Move architecture details to Docs and Concepts pages.
 
-Homepage answers only:
+Homepage answers:
 
-What is it?
+What can I build with it?
 
-What does it do?
+How does the prompt-to-strategy workflow work?
 
 How do I start?
 
@@ -55,19 +55,19 @@ How do I start?
 
 Primary:
 
-Developers building trading systems
+AI agent builders who need a structured trading skill
 
-Quant engineers
+Developers building autonomous trading systems
 
-AI agent builders
+Quant engineers who want to prototype faster with LLMs
 
 OpenClaw / agent framework users
 
 Secondary:
 
-Advanced traders who can read Python
+Advanced traders who can read Python and want AI-assisted strategy creation
 
-Infra-level Web3 builders
+Web3 builders integrating DeFi trading into agent pipelines
 
 4. Website Structure
 Top-Level Navigation
@@ -94,13 +94,11 @@ VibeTrading
 
 Subtitle
 
-Open-source trading framework for generating, backtesting, and deploying strategies across exchanges.
+Describe a strategy in plain English. Get executable Python. Backtest and deploy to any exchange.
 
 Supporting Line
 
-Generate strategies.
-Run them anywhere.
-Backtest natively.
+Prompt-to-strategy framework for AI-native trading.
 
 Buttons
 
@@ -108,63 +106,50 @@ Get Started
 
 GitHub
 
-No additional marketing claims.
+Section 2 — How It Works (Primary Section)
 
-Section 2 — Core Capabilities
+Three-step workflow:
 
-Four equally weighted blocks:
+1. Describe
 
-1. Strategy Generation
+Tell the agent what you want in natural language.
 
-Create structured trading strategies from prompts or templates.
+"RSI(14) oversold entry, ATR-based stop loss, 3x leverage on BTC"
 
-Output is:
+2. Generate
 
-Framework-compatible
+The AI agent produces framework-compatible strategy code with the @vibe decorator, proper risk management, and exchange-agnostic execution.
 
-Execution-ready
+3. Backtest & Deploy
 
-Backtest-ready
-
-2. Multi-Exchange Support
-
-Deploy the same strategy across different exchanges.
-
-Exchange logic is abstracted through adapters.
-
-Write once. Run anywhere.
-
-3. Built-in Backtesting
-
-Backtest strategies using the same code used for live trading.
-
-No separate implementation required.
-
-4. Agent-Compatible
-
-Expose the framework as a skill for autonomous agents.
-
-Agents generate strategies within a structured schema defined by the framework.
+Run the generated code against historical data. When ready, deploy to a live exchange with zero code changes.
 
 Section 3 — Quick Example (Critical Section)
 
-A single, clear, runnable example:
+Show the end-to-end workflow:
 
-from vibetrading import generate_strategy, BacktestEngine
+```python
+from vibetrading import StrategyGenerator, BacktestEngine
 
-strategy = generate_strategy("""
-RSI(14) < 30
-ATR stop loss
-Max leverage 3x
-""")
+generator = StrategyGenerator(model="gpt-4o", temperature=0.2)
+code = generator.generate(
+    "BTC SMA crossover: long when SMA(10) > SMA(50), "
+    "short when SMA(10) < SMA(50), 3x leverage"
+)
 
-engine = BacktestEngine(strategy)
-engine.run("BTCUSDT", timeframe="1h")
-
+engine = BacktestEngine(
+    start_time="2025-01-01",
+    end_time="2025-06-01",
+    interval="1h",
+    exchange="hyperliquid",
+    initial_balances={"USDC": 10_000},
+)
+results = engine.run(code)
+```
 
 The example should demonstrate:
 
-Strategy generation
+Strategy code generated from a human-readable prompt
 
 Unified engine usage
 
@@ -172,43 +157,97 @@ Backtest-native workflow
 
 Keep it short and readable.
 
-Section 4 — Architecture Overview (Simple Diagram)
+Section 4 — Why Agent-First
 
-Minimal visual representation:
+Three blocks:
 
-Strategy Layer
-↓
-Signal Layer (optional)
-↓
-Risk Layer
-↓
-Execution Layer (Exchange Adapters)
-↓
-Backtest Engine
+1. Structured Interface for LLMs
 
-Keep explanation under 5 sentences.
+The @vibe decorator and vibetrading namespace create a deterministic, well-constrained API surface that LLMs can target reliably. Every function, parameter, and return type is designed for machine generation.
 
-Avoid buzzwords.
+2. Generate → Validate → Iterate
 
-Section 5 — Design Principles
+Generated strategies can be immediately backtested. Errors are captured with full context (line number, code snippet) and fed back to the LLM for automatic correction. This enables closed-loop strategy refinement.
+
+3. Same Code Everywhere
+
+Strategies generated by AI run identically in backtesting and live trading. No translation layer. No manual adaptation. The agent writes it once and it works across environments and exchanges.
+
+Section 5 — Core Capabilities
+
+Four blocks:
+
+1. Strategy Generation
+
+Generate structured trading strategies from natural language prompts. Output is framework-compatible, execution-ready, and backtest-ready. Any LLM can target the vibetrading API.
+
+2. Multi-Exchange Support
+
+Deploy the same strategy across different exchanges. Exchange logic is abstracted through adapters. Write once. Run anywhere.
+
+3. Built-in Backtesting
+
+Backtest strategies using the same code used for live trading. No separate implementation required. Full metrics: Sharpe ratio, max drawdown, win rate, funding revenue.
+
+4. Agent Skill Exposure
+
+Expose the framework as a skill for autonomous agent systems. The @vibe interface, structured error handling, and metadata models make VibeTrading a composable building block for agent pipelines.
+
+Section 6 — Architecture Overview
+
+```
+User Prompt (natural language)
+         │
+         ▼
+┌─────────────────────────┐
+│   LLM Agent             │  ← any model (Claude, GPT, Gemini, etc.)
+│   + tool calls          │  ← market data, news, fundamentals
+└────────┬────────────────┘
+         │ generates
+         ▼
+Strategy Code (@vibe decorated)
+         │
+         ▼
+┌─────────────────────────┐
+│   vibetrading module    │  ← runtime-injected API
+│   (mock namespace)      │
+└────────┬────────────────┘
+         │
+    ┌────┴────┐
+    ▼         ▼
+Backtest    Live
+Engine      Runner
+    │         │
+    ▼         ▼
+Static     Exchange
+Sandbox    Sandbox
+(CCXT      (Hyperliquid, Paradex,
+ data)      Extended, Lighter, ...)
+```
+
+Keep explanation under 5 sentences. The diagram tells the story.
+
+Section 7 — Design Principles
 
 Short bullet list:
 
-Strategy-first abstraction
+Agent-first strategy creation
+
+Prompt-to-strategy pipeline with closed-loop validation
 
 Exchange-agnostic execution
 
 Backtest-native architecture
 
-Modular signal pipeline
+LLM-friendly API surface with deterministic constraints
 
-Human and agent compatible
+Human-readable and machine-generated strategies are identical
 
 No long paragraphs.
 
-Section 6 — Call to Action
+Section 8 — Call to Action
 
-Start building strategies with a unified framework.
+Describe a strategy. Generate the code. Backtest it. Deploy it live.
 
 [ Get Started ]
 [ View on GitHub ]
@@ -222,37 +261,51 @@ Getting Started
 
 Installation
 
-First Strategy
+Your First Prompt-to-Strategy
 
 Running a Backtest
 
 Deploying to Exchange
 
+Agent Integration
+
+Using VibeTrading as an Agent Skill
+
+Prompt Template Reference
+
+Strategy Constraints for LLM Generation
+
+Error Feedback Loop
+
+Structured Metadata Schema
+
+Tool Integration (Market Data, News, Fundamentals)
+
 Core Concepts
 
-Strategy Interface
+The @vibe Decorator
 
-Strategy Generation Engine
+The vibetrading Namespace
+
+Strategy Interface
 
 Exchange Adapter Layer
 
 Backtest Engine
 
-Risk Management Module
+Risk Management
 
-Signal Pipeline
+Writing Strategies
 
-Agent Skill Exposure
+Strategy Code Structure
 
-Agent Integration
+Position Sizing Patterns
 
-Using VibeTrading as a Skill
+Multi-Asset Strategies
 
-OpenClaw Integration
+Grid Strategy Architecture
 
-Structured Strategy Schema
-
-Agent Strategy Constraints
+Rate-Limit Safe Patterns
 
 Advanced
 
@@ -268,38 +321,50 @@ Extending the Framework
 
 API Reference
 
-Strategy
-
 BacktestEngine
 
-ExchangeAdapter
+LiveRunner
 
-RiskModule
+VibeSandboxBase
 
-generate_strategy()
+create_sandbox()
+
+MetricsCalculator
 
 7. Messaging Guidelines
 Tone
 
-Calm
+Clear
 
 Technical
 
-Clear
-
 Direct
 
-No hype
+Confident but not hyped
+
+Agent-native vocabulary
+
+Prefer
+
+"Describe your strategy" over "Write your strategy"
+
+"Generate" over "Create" (when referring to AI output)
+
+"Prompt-to-strategy" over "AI-powered"
+
+"Agent skill" over "AI feature"
 
 Avoid
 
-“Revolutionary”
+"Revolutionary"
 
-“AI-powered future”
+"AI-powered future"
 
-“Next generation quant”
+"Autonomous wealth engine"
 
-“Autonomous wealth engine”
+"Next generation quant"
+
+"No-code" (strategies ARE code — they are generated code)
 
 Use
 
@@ -307,13 +372,17 @@ Framework
 
 Strategy
 
+Prompt
+
+Generate
+
 Backtest
 
-Adapter
+Agent
 
-Unified
+Skill
 
-Modular
+Deploy
 
 8. Agent Positioning Strategy
 
@@ -321,19 +390,23 @@ Important:
 
 On homepage:
 
-Agent support is a feature.
+Agent-first is the core identity. The primary workflow is prompt-to-strategy.
 
 In documentation:
 
-Agent integration is an architectural layer.
+Agent integration is an architectural layer with detailed guidance on prompt templates, constraint schemas, error feedback loops, and tool integration.
+
+For developers:
+
+The framework is equally usable without AI. Manual strategy writing is fully supported. The agent-first positioning reflects the primary use case, not a requirement.
 
 This preserves:
 
-Framework-first identity
+Agent-first identity as the primary value proposition
 
-Long-term infra positioning
+Developer accessibility for those who prefer manual coding
 
-Ecosystem flexibility
+Ecosystem flexibility for integration with any LLM or agent framework
 
 9. Long-Term Scalability Consideration
 
@@ -341,17 +414,19 @@ The website should allow expansion without repositioning:
 
 Future additions:
 
-RL integration
+Multi-agent strategy orchestration
 
-Multi-agent orchestration
+Evolutionary strategy optimization (genetic/tournament-based)
 
-Portfolio allocator
+RL-based strategy refinement
 
 Strategy marketplace
 
-Performance evaluation framework
+Performance evaluation and ranking framework
 
-None of these should require changing homepage positioning.
+Cross-exchange arbitrage pipelines
+
+None of these should require changing homepage positioning. The agent-first framing naturally accommodates all of them.
 
 10. Visual Style Guidelines
 
@@ -367,34 +442,40 @@ Monospace code emphasis
 
 No excessive animation
 
+Workflow-oriented (show the prompt → code → result pipeline visually)
+
 Inspirations:
 
-FastAPI
+Cursor
 
-PyTorch
+Vercel
 
 LangChain
 
-Tailwind Docs
+FastAPI
 
 Code blocks should visually dominate over marketing graphics.
+
+The prompt-to-strategy flow (input prompt → generated code → backtest results) should be the visual centerpiece of the homepage.
 
 11. Summary
 
 VibeTrading.dev website should:
 
-Present a clear, simple framework identity
+Present a clear agent-first framework identity
 
-Emphasize usability and structure
+Lead with the prompt-to-strategy workflow
 
-Show runnable examples quickly
+Show the full lifecycle: describe → generate → backtest → deploy
 
-Avoid over-explaining architecture on the homepage
+Provide runnable examples immediately
 
-Move philosophical depth into documentation
+Demonstrate that generated strategies are real, executable Python
+
+Move implementation depth into documentation
 
 Core Homepage Message:
 
-VibeTrading is a unified, open-source trading framework for generating, backtesting, and deploying multi-exchange strategies.
+VibeTrading is an open-source framework where you describe trading strategies in natural language and AI generates executable code that backtests and deploys across exchanges.
 
 Everything else is detail.
