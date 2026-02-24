@@ -7,22 +7,23 @@ import { useI18n } from "@/lib/i18n/context";
 
 const GITHUB_URL = "https://github.com/VibeTradingLabs/vibetrading";
 
-const heroCode = `from vibetrading import StrategyGenerator, BacktestEngine
+const heroCode = `import vibetrading.strategy
+import vibetrading.backtest
 
-generator = StrategyGenerator(model="gpt-4o", temperature=0.2)
-code = generator.generate(
+# Generate strategy from natural language
+code = vibetrading.strategy.generate(
     "BTC SMA crossover: long when SMA(10) > SMA(50), "
     "short when SMA(10) < SMA(50), 3x leverage"
 )
 
-engine = BacktestEngine(
+# Backtest with one call
+results = vibetrading.backtest.run(
+    code,
     start_time="2025-01-01",
     end_time="2025-06-01",
     interval="1h",
-    exchange="hyperliquid",
-    initial_balances={"USDC": 10_000},
 )
-results = engine.run(code)`;
+print(results["metrics"])`;
 
 export default function HeroSection() {
   const { t } = useI18n();

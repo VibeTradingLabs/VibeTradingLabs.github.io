@@ -6,22 +6,21 @@ import { useI18n } from "@/lib/i18n/context";
 
 const installCode = `pip install vibetrading`;
 
-const exampleCode = `from vibetrading import StrategyGenerator, BacktestEngine
+const exampleCode = `import vibetrading.strategy
+import vibetrading.backtest
+import vibetrading.tools
 
-generator = StrategyGenerator(model="gpt-4o", temperature=0.2)
+# Generate strategy from a prompt
+generator = vibetrading.strategy.StrategyGenerator(model="gpt-4o")
 code = generator.generate(
     "BTC SMA crossover: long when SMA(10) > SMA(50), "
     "short when SMA(10) < SMA(50), 3x leverage"
 )
 
-engine = BacktestEngine(
-    start_time="2025-01-01",
-    end_time="2025-06-01",
-    interval="1h",
-    exchange="hyperliquid",
-    initial_balances={"USDC": 10_000},
-)
-results = engine.run(code)`;
+# Download data & backtest
+data = vibetrading.tools.download_data(["BTC"], interval="1h")
+results = vibetrading.backtest.run(code, data=data)
+print(results["metrics"])`;
 
 export default function QuickstartSection() {
   const { t } = useI18n();
