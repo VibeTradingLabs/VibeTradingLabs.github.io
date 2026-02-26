@@ -106,7 +106,7 @@ Backtest natively.
 
 Buttons:
 
-Get Started → /docs/getting-started
+Get Started → https://docs.vibetrading.dev/
 
 GitHub → external
 

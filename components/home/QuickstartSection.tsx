@@ -53,7 +53,7 @@ export default function QuickstartSection() {
             {/* CTA */}
             <div className="pt-2">
               <Link
-                href="/docs/getting-started"
+                href="https://docs.vibetrading.dev/"
                 className="inline-flex items-center gap-2 text-sm font-medium text-[var(--text-primary)] underline underline-offset-4 decoration-[var(--border-secondary)] transition-colors hover:decoration-[var(--text-primary)]"
               >
                 {t("quickstart.readDocs")} &rarr;

@@ -54,7 +54,7 @@ export default function HeroSection() {
 
             <div className="mt-8 flex flex-wrap gap-4">
               <Link
-                href="/docs/getting-started"
+                href="https://docs.vibetrading.dev/"
                 className="inline-flex items-center justify-center rounded-none border border-[var(--text-primary)] bg-[var(--text-primary)] px-7 py-3 text-xs font-medium uppercase tracking-widest text-white transition-colors hover:bg-transparent hover:text-[var(--text-primary)]"
                 aria-label="Get started with VibeTrading"
               >
