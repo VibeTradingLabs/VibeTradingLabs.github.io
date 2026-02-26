@@ -20,6 +20,7 @@ export default function FooterCTASection() {
           <div className="mt-10 flex flex-wrap items-center justify-center gap-4">
             <Link
               href="https://docs.vibetrading.dev/"
+              target="_blank"
               className="inline-flex items-center justify-center rounded-none border border-[var(--text-primary)] bg-[var(--text-primary)] px-7 py-3 text-xs font-medium uppercase tracking-widest text-white transition-colors hover:bg-transparent hover:text-[var(--text-primary)]"
               aria-label="Get started with VibeTrading"
             >

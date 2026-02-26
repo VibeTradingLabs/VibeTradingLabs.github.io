@@ -5,6 +5,8 @@ import Link from "next/link";
 import { useI18n } from "@/lib/i18n/context";
 
 const GITHUB_URL = "https://github.com/VibeTradingLabs/vibetrading";
+const DISCORD_URL = "https://discord.com/invite/5Czvb8M4hy";
+const X_URL = "https://x.com/vibetrading_dev";
 
 export default function Footer() {
   const { t } = useI18n();
@@ -21,6 +23,7 @@ export default function Footer() {
         <nav className="flex items-center gap-6 text-xs text-[var(--text-tertiary)]">
           <Link
             href="https://docs.vibetrading.dev/"
+            target="_blank"
             className="transition-colors hover:text-[var(--text-primary)]"
           >
             {t("nav.docs")}
@@ -30,6 +33,18 @@ export default function Footer() {
             className="transition-colors hover:text-[var(--text-primary)]"
           >
             GitHub
+          </ExternalLink>
+          <ExternalLink
+            href={X_URL}
+            className="transition-colors hover:text-[var(--text-primary)]"
+          >
+            X
+          </ExternalLink>
+          <ExternalLink
+            href={DISCORD_URL}
+            className="transition-colors hover:text-[var(--text-primary)]"
+          >
+            Discord
           </ExternalLink>
         </nav>
       </div>

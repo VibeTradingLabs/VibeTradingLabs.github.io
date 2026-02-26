@@ -1,21 +1,21 @@
-interface ExternalLinkProps {
-  href: string;
-  children: React.ReactNode;
-  className?: string;
+type ExternalLinkProps = Omit<
+  React.AnchorHTMLAttributes<HTMLAnchorElement>,
+  "target" | "rel"
+> & {
   newTab?: boolean;
-}
+};
 
 export default function ExternalLink({
-  href,
   children,
   className = "",
   newTab = true,
+  ...rest
 }: ExternalLinkProps) {
   return (
     <a
-      href={href}
       className={className}
       {...(newTab && { target: "_blank", rel: "noopener noreferrer" })}
+      {...rest}
     >
       {children}
     </a>
