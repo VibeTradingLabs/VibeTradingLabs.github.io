@@ -20,13 +20,13 @@ const capabilities: {
     ),
   },
   {
-    titleKey: "capabilities.multiExchange.title",
-    descKey: "capabilities.multiExchange.desc",
+    titleKey: "capabilities.analysis.title",
+    descKey: "capabilities.analysis.desc",
     icon: (
       <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
-        <rect x="2" y="3" width="20" height="14" rx="2" ry="2" />
-        <line x1="8" y1="21" x2="16" y2="21" />
-        <line x1="12" y1="17" x2="12" y2="21" />
+        <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4" />
+        <polyline points="17 8 12 3 7 8" />
+        <line x1="12" y1="3" x2="12" y2="15" />
       </svg>
     ),
   },
@@ -40,13 +40,13 @@ const capabilities: {
     ),
   },
   {
-    titleKey: "capabilities.agent.title",
-    descKey: "capabilities.agent.desc",
+    titleKey: "capabilities.evolution.title",
+    descKey: "capabilities.evolution.desc",
     icon: (
       <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
-        <path d="M12 2a2 2 0 0 1 2 2c0 .74-.4 1.39-1 1.73V7h1a7 7 0 0 1 7 7h1a1 1 0 0 1 1 1v3a1 1 0 0 1-1 1h-1.27A7 7 0 0 1 14 22h-4a7 7 0 0 1-6.73-3H2a1 1 0 0 1-1-1v-3a1 1 0 0 1 1-1h1a7 7 0 0 1 7-7h1V5.73c-.6-.34-1-.99-1-1.73a2 2 0 0 1 2-2z" />
-        <circle cx="9.5" cy="15.5" r="1" fill="currentColor" />
-        <circle cx="14.5" cy="15.5" r="1" fill="currentColor" />
+        <polyline points="23 4 23 10 17 10" />
+        <polyline points="1 20 1 14 7 14" />
+        <path d="M3.51 9a9 9 0 0 1 14.85-3.36L23 10M1 14l4.64 4.36A9 9 0 0 0 20.49 15" />
       </svg>
     ),
   },

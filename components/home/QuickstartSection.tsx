@@ -6,21 +6,30 @@ import { useI18n } from "@/lib/i18n/context";
 
 const installCode = `pip install vibetrading`;
 
-const exampleCode = `import vibetrading.strategy
+const exampleCode = `import vibetrading
+import vibetrading.strategy
 import vibetrading.backtest
 import vibetrading.tools
 
-# Generate strategy from a prompt
-generator = vibetrading.strategy.StrategyGenerator(model="gpt-4o")
-code = generator.generate(
-    "BTC SMA crossover: long when SMA(10) > SMA(50), "
-    "short when SMA(10) < SMA(50), 3x leverage"
+# 1. Generate strategy from a prompt
+code = vibetrading.strategy.generate(
+    "BTC momentum: RSI(14) oversold entry, SMA crossover, "
+    "3x leverage, 8% TP, 4% SL",
+    model="gpt-4o",
 )
 
-# Download data & backtest
+# 2. Backtest on historical data
 data = vibetrading.tools.download_data(["BTC"], interval="1h")
 results = vibetrading.backtest.run(code, data=data)
-print(results["metrics"])`;
+
+# 3. Analyze with LLM
+report = vibetrading.strategy.analyze(results, strategy_code=code)
+print(f"Score: {report.score}/10")
+print(report.suggestions)
+
+# 4. Or evolve in one call (generate → backtest → analyze loop)
+result = vibetrading.evolve("BTC momentum with RSI", iterations=3)
+print(result.best_code)`;
 
 export default function QuickstartSection() {
   const { t } = useI18n();
